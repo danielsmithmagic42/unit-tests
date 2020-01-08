@@ -34,6 +34,9 @@ class CSVReaderTest extends TestCase
     $csv = new CSVReader('data/non_csv_file.docx');
   }
 
+  /**
+   * Test the correct headers are stored from reading the csv file
+   */
   public function testHeaders()
   {
     $this->assertEquals(
@@ -43,6 +46,8 @@ class CSVReaderTest extends TestCase
   }
 
   /**
+   * Test a given record exists when read from the csv file
+   *
    * @dataProvider recordProvider
    */
   public function testRecordExists(array $record)
@@ -50,6 +55,12 @@ class CSVReaderTest extends TestCase
     $this->assertContains($record, $this->testCsv->asArray());
   }
 
+  /**
+   * Provides test records to see if they exist when they are read in
+   * @see CSVReaderTest::testRecordExists
+   *
+   * @return array the records to test
+   */
   public function recordProvider() : array
   {
     return [
