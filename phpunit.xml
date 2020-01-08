@@ -1,7 +1,7 @@
 <phpunit>
   <testsuites>
     <testsuite name="csv">
-      <directory>tests</directory>
+      <file>tests/CSVReaderTest.php</file>
     </testsuite>
   </testsuites>
 </phpunit>
