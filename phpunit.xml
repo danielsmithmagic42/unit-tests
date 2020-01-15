@@ -2,6 +2,7 @@
   <testsuites>
     <testsuite name="csv">
       <file>tests/CSVReaderTest.php</file>
+      <file>tests/CSVStatsTest.php</file>
     </testsuite>
   </testsuites>
 </phpunit>
