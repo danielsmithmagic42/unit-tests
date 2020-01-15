@@ -6,12 +6,14 @@ use PHPUnit\Framework\TestCase;
 
 class CSVReaderTest extends TestCase
 {
-    /** CSVReader $testCsv */
+    const TEST_CSV_PATH = 'data/test.csv';
+
+    /** @var CSVReader $testCsv */
     private $testCsv;
 
     public function setUp()
     {
-        $this->testCsv = new CSVReader('data/test.csv');
+        $this->testCsv = new CSVReader(self::TEST_CSV_PATH);
     }
 
     public function tearDown()
