@@ -59,6 +59,26 @@ class CSVReaderTest extends TestCase
     }
 
     /**
+     * Test that the computational heavy reading of the CSV is done only once.
+     * Should be done once, no matter number of calls.
+     */
+    public function testReadCalledOnce()
+    {
+        $mockReader = $this->createMock(
+            CSVReader::class,
+            'readToArray',
+            [self::TEST_CSV_PATH]
+        );
+
+        $mockReader->expects($this->once())
+            ->method('readToArray');
+
+        $mockReader->asArray();
+        $mockReader->asArray();
+        $mockReader->asArray();
+    }
+
+    /**
      * Provides test records to see if they exist when they are read in
      * @see CSVReaderTest::testRecordExists
      *
