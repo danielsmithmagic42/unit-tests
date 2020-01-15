@@ -57,11 +57,54 @@ class CSVStatsTest extends TestCase
 
     /**
      * Test the sum of a column functionality works
+     *
+     * @covers CSVStats::sum
      */
     public function testSumValidHeader()
     {
-        $testHeader = "x";
+        $testHeader = 'x';
 
         $this->assertEquals(0.90, $this->stats->sum($testHeader));
+    }
+
+    /**
+     * Test the max of a column functionality works
+     *
+     * @covers CSVStats::max
+     */
+    public function testMax()
+    {
+        $testHeader = 'y';
+
+        $this->assertEquals(0.78, $this->stats->max($testHeader));
+    }
+
+    /**
+     * Test the mean of a column functionality works
+     *
+     * @covers CSVStats::max
+     */
+    public function testMean()
+    {
+        $testHeader = 'z';
+
+        $this->assertEquals(0.41, $this->stats->mean($testHeader));
+    }
+
+    /**
+     * Test the standard deviation of a column functionality works
+     *
+     * @covers CSVStats::stddev
+     */
+    public function testStddev()
+    {
+        $testHeader = 'x';
+
+        $this->assertEquals(
+            0.035,
+            round($this->stats->stddev($testHeader), 3),
+            null,
+            0.0000001
+        );
     }
 }
