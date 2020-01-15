@@ -17,7 +17,7 @@ class CSVReader
         $this->headers = null;
         $this->data = null;
 
-        if(!$this->isValid()) {
+        if(!$this->isValidFile($filePath)) {
             throw new Exception('FilePath provided is not valid');
         }
     }
@@ -53,15 +53,16 @@ class CSVReader
     /**
      * Check if the file path provided is a valid csv file
      *
+     * @param string $filePath
      * @return bool
     */
-    private function isValid() : bool
+    private function isValidFile(string $filePath) : bool
     {
-        if (substr($this->filePath, -4) !== '.csv') {
+        if (substr($filePath, -4) !== '.csv') {
             return false;
         }
 
-        if (!file_exists($this->filePath)) {
+        if (!file_exists($filePath)) {
             return false;
         }
 
